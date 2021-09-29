@@ -1,0 +1,40 @@
+﻿<Window x:Class="demoex_disign.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:demoex_disign"
+        mc:Ignorable="d"
+        Title="Основное меню" Height="375.204" Width="694.551">
+    <Grid Background="#FFC9DEF5" Margin="0,0,0,5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Rectangle 
+                   Grid.Column="0" Grid.Row="0"
+                   Grid.ColumnSpan="2" Fill="#FF43DCFD" />
+        <Rectangle Fill="White"
+                   Grid.Column="0" Grid.Row="1" Margin="0,0,32,0" />
+        <StackPanel Grid.Column="0" Grid.Row="1" Margin="0,0,32,0">
+            <Button Margin="29,80,29,10" x:Name="allagent"  Background="#FF43DCFD" Height="37" Content="все агенты" Click="allagent_Click" FontFamily="Comic Sans MS" FontSize="15" RenderTransformOrigin="0.527,2.795"/>
+            <Button  x:Name="back"
+                     Background="#FF43DCFD" Content="выход" Margin="48,20" Click="back_Click" FontFamily="Comic Sans MS" FontSize="15" Height="33" />
+        </StackPanel>
+        <StackPanel Grid.Row="0"
+                    Orientation="Vertical"
+                    VerticalAlignment="Center" Margin="0,10,10,0" Height="70" Grid.Column="1" HorizontalAlignment="Right" Width="128"/>
+        <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" >
+            <Label Content="Агенты компании по производству каучуковых изделий" Height="55" FontSize="21" VerticalAlignment="Center" FontFamily="Comic Sans MS" Margin="-97,0,0,0" />
+        </StackPanel>
+
+        <Frame Grid.Row="1"
+               Background="White" Name="mainframe" Grid.ColumnSpan="2" Margin="168,0,0,0"/>
+        <Label Content="Здравствуйте!" Height="54" FontSize="21" FontFamily="Comic Sans MS" Margin="0,100,155,0" Grid.Row="1" RenderTransformOrigin="0.545,0.529" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="180" />
+        <Image Source="./image/Попрыженок.ico" Margin="0,0,81,0" />
+    </Grid>
+</Window>
