@@ -13,13 +13,19 @@ namespace demoex_disign
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class Entities1 : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        private static Entities1 _con;
+        public Entities1()
+            : base("name=Entities1")
         {
         }
-    
+        public static Entities1 GetContext()
+        {
+            if (_con == null)
+                _con = new Entities1();
+            return _con;
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

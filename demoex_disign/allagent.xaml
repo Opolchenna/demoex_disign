@@ -5,40 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:demoex_disign"
         mc:Ignorable="d"
-        Title="информация об агентах" Height="512" Width="851" Loaded="allagent_load">
-    <Grid Margin="0,0,0,0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="166*"/>
-            <ColumnDefinition Width="115*"/>
-        </Grid.ColumnDefinitions>
+        Title="информация об агентах" Height="550" Width="851" Loaded="allagent_load" Icon="Попрыженок.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0" VerticalAlignment="Center" Height="64" Margin="0,0,0,417" Grid.ColumnSpan="2">
-            <TextBox x:Name="Search" FontSize="14" Margin="23,15,0,500" Text="{Binding SearchString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="265" FontFamily="Comic Sans MS" />
-            <ComboBox x:Name="sort" Margin="307,-520,0,377" BorderBrush="White" Foreground="White" OpacityMask="White" Height="21" Width="225" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="sort_SelectionChanged" FontFamily="Comic Sans MS">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Foreground="Black">по убыванию</TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Background="White" Foreground="Black">по возрастанию</TextBlock>
-                </StackPanel>
-            </ComboBox>
-
-            <ComboBox x:Name="filter" Margin="555,-520,0,377"  BorderBrush="White" Foreground="White" OpacityMask="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="219" FontFamily="Comic Sans MS">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Foreground="Black">по приоритету</TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Background="White" Foreground="Black">по имени агента</TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Background="White" Foreground="Black">по кол-ву продаж</TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Background="White" Foreground="Black">по телефону</TextBlock>
-                </StackPanel>
-            </ComboBox>
+        <StackPanel Grid.Row="0" Background="#FF43DCFD">
+            <Label HorizontalAlignment="Center" Content="Попрыженок" FontSize="26"  FontFamily="Comic Sans MS"/>
         </StackPanel>
-        <DataGrid Name="dgAgents" AutoGenerateColumns="False" Height="355" HorizontalAlignment="Center" Margin="0,64,0,0" VerticalAlignment="Top" SelectionChanged="dgAgents_SelectionChanged" Grid.ColumnSpan="2">
+        <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center" Height="60" HorizontalAlignment="Right" Width="128">
+            <Button  x:Name="back" Background="White" Content="выход" Height="20" Width="70" FontFamily="Comic Sans MS" Click="buttonexit_Click" Margin="0,15,0,0"/>
+        </StackPanel >
+        <Image Source="./image/Попрыженок.ico" HorizontalAlignment="Left" Height="48" />
+        <StackPanel VerticalAlignment="Center" Height="64" Grid.Row="1" Orientation="Horizontal">
+            <TextBox x:Name="search" Margin="15,0" TextChanged="search_TextChanged" HorizontalAlignment="Left" Width="265" Height="25" FontFamily="Comic Sans MS" />
+            <ComboBox x:Name="fil" Width="219" SelectionChanged="filter_SelectionChanged" Height="25" FontFamily="Comic Sans MS" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="sort" Margin="15, 0" Height="25" Width="219" SelectionChanged="sort_SelectionChanged" FontFamily="Comic Sans MS"/>
+        </StackPanel>
+        <DataGrid Name="gridAgent" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Top" SelectionChanged="dgAgents_SelectionChanged" Grid.Row="2"
+                  CanUserAddRows="False" FontFamily="Comic Sans MS">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="1*">
                     <DataGridTemplateColumn.CellTemplate>
@@ -49,24 +38,24 @@
                                 </StackPanel>
                                 <StackPanel Margin="15,0,0,0">
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Title}"/>
-                                        <TextBlock Text=" | "/>
-                                        <TextBlock Text="{Binding Title}"/>
+                                        <TextBlock Text="{Binding Title}" FontFamily="Comic Sans MS"/>
+                                        <TextBlock Text=" || "/>
+                                        <TextBlock Text="{Binding AgentTyp}" FontFamily="Comic Sans MS"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding prodaji}"/>
-
-                                        <TextBlock Text=" 10 продаж за год"/>
-
+                                        <TextBlock Text="{Binding prodaji}" FontFamily="Comic Sans MS"/>
+                                        <TextBlock Text=" 10 продаж за год" FontFamily="Comic Sans MS"/>
                                     </StackPanel>
                                     <TextBlock Text="{Binding Phone}"/>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Приоритет: "/>
-                                        <TextBlock Text="{Binding Priority}"/>
+                                        <TextBlock Text="Приоритет: " FontFamily="Comic Sans MS"/>
+                                        <TextBlock Text="{Binding Priority}" FontFamily="Comic Sans MS"/>
                                     </StackPanel>
-                                </StackPanel>
-                                <StackPanel HorizontalAlignment="Right">
-                                    <TextBlock Text="{Binding sale}"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="скидка: "/>
+                                        <TextBlock Text="{Binding sale}"/>
+                                        <TextBlock Text=" %"/>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
                         </DataTemplate>
@@ -74,14 +63,13 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="buttonDelete" 
-            Margin="119,437,289,20" Click="buttonDelete_Click" Background="#FFF9969E" FontFamily="Comic Sans MS" >удалить</Button>
-        <Button Name="buttonEdit" 
-             Margin="10,437,398,20" Click="buttonEdit_Click" Background="#FFF9969E" FontFamily="Comic Sans MS" >изменить</Button>
-        <Button Name="buttonexit" 
-             Margin="231,437,24,20" Click="buttonexit_Click" Background="#FF43DCFD" Grid.Column="1" FontFamily="Comic Sans MS" >выход</Button>
-        <Button Name="buttonadd" 
-             Margin="239,437,169,20" Click="buttonadd_Click" Background="#FF43DCFD" FontFamily="Comic Sans MS" >добавить</Button>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Width="310" VerticalAlignment="Center">
+            <Button Name="buttonDelete" Margin="0, 0, 20, 0"
+             Click="buttonDelete_Click" Background="#FFF9969E" FontFamily="Comic Sans MS" Width="90" >удалить</Button>
+            <Button Name="buttonEdit" 
+             Click="buttonEdit_Click" Background="#FFF9969E" FontFamily="Comic Sans MS" Width="90" >изменить</Button>
+            <Button Name="buttonadd" Margin="20, 0"
+             Click="buttonadd_Click" Background="#FFF9969E" FontFamily="Comic Sans MS" Width="90">добавить</Button>
+        </StackPanel>
     </Grid>
-
 </Window>

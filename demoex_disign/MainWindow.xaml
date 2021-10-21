@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:demoex_disign"
         mc:Ignorable="d"
-        Title="Основное меню" Height="375.204" Width="694.551">
+        Title="Основное меню" Height="375.204" Width="694.551" Icon="Попрыженок.png">
     <Grid Background="#FFC9DEF5" Margin="0,0,0,5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>

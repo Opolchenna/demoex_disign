@@ -1,0 +1,51 @@
+﻿<Window x:Class="demoex_disign.addpage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:demoex_disign"
+        mc:Ignorable="d"
+        Title="добавление/изменение агента" Height="450" Width="800" Icon="Попрыженок.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Row="0" Background="#FF43DCFD" Grid.ColumnSpan="2">
+            <Label HorizontalAlignment="Center" Content="Попрыженок" FontSize="26"  FontFamily="Comic Sans MS"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0"  Grid.ColumnSpan="2" Orientation="Vertical" VerticalAlignment="Center" Height="60" HorizontalAlignment="Right" Width="128">
+            <Button  x:Name="back"  Background="White" Content="назад" Height="20" Width="70" Margin="0, 5, 0, 0"  FontFamily="Comic Sans MS" Click="back_click" />
+            <Button x:Name="exit"  Background="White" Content="выход" Height="20" Width="70" Margin="0, 8, 0, 0"  FontFamily="Comic Sans MS" Click="exit_Click" />
+        </StackPanel >
+        <Image Source="./image/Попрыженок.ico" HorizontalAlignment="Left" Height="48" />
+
+        <Label  Grid.Row="1" Grid.ColumnSpan="2" FontFamily="Comic Sans MS" HorizontalAlignment="Center" VerticalAlignment="Top">Пожалуйста, внесите данные об агенте</Label>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            
+            <StackPanel Orientation="Vertical" Width="107" >
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="0,29,10,0">Наименование</Label>
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left">Адрес</Label>
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left">ИНН</Label>
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left">КПП</Label>
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left">Имя директора</Label>
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left">Телефон</Label>
+            </StackPanel>
+            
+            <StackPanel>
+                <TextBox x:Name="title" Width="285" Margin="0,29,0,0"></TextBox>
+            </StackPanel>
+            
+        </StackPanel>
+        <StackPanel>
+            <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left">Почта</Label>
+            <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left">Приоритет</Label>
+            <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left">Скидка</Label>
+        </StackPanel>
+    </Grid>
+</Window>

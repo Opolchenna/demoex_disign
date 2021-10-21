@@ -24,8 +24,71 @@ namespace demoex_disign
         public allagent()
         {
             InitializeComponent();
+            //gridAgent.ItemsSource = Entities1.GetContext().Agent.ToList();
+
+            //var allagent = Entities1.GetContext().AgentType.ToList();
+            //allagent.Insert(0, new AgentType
+            //{
+            //    Title = "all type agents"
+            //});
+            //filter.ItemsSource = allagent;
+
+            //filter.SelectedIndex = 0;
+
+            //var currentAgent = Entities1.GetContext().Agent.ToList();
+            //gridAgent.ItemsSource = currentAgent;
+
+            sort.Items.Add("Сортировка");
+            sort.Items.Add("От А до Я");
+            sort.Items.Add("От Я до А");
+
+            filter();
+            fil.SelectedIndex = 0;
+            sort.SelectedIndex = 0;
+            searchу();
+
         }
 
+        private void UpdateAgent()
+        {
+            //var currentAgent = Entities1.GetContext().Agent.ToList();
+
+            //if (filter.SelectedIndex > 0)
+            //  currentAgent = currentAgent.Where(p => p.Agents.Contains(filter.SelectedItem as Agent)).ToList();
+            ////gridAgent.ItemsSource = currentAgent;
+            //gridAgent.ItemsSource = currentAgent.OrderBy(p => p.Title).ToList();
+
+        }
+        private void searchу()
+        {
+            List<Agent> agent = DBagent.db.Agent.Where(stroka => stroka.Title.StartsWith(search.Text)).ToList();
+
+            if (fil.SelectedIndex > 0)
+            {
+                agent = agent.Where(stroka => stroka.AgentTyp.Title == fil.SelectedItem.ToString()).ToList();
+            }
+
+            switch (sort.SelectedIndex)
+            {
+                case 0:; break;
+                case 1: agent = agent.OrderBy(stroka => stroka.Title).ToList(); break;
+                case 2: agent = agent.OrderByDescending(stroka => stroka.Title).ToList(); break;
+            }
+
+            gridAgent.ItemsSource = agent;
+
+
+        }
+        private void filter()
+        {
+            fil.Items.Add("Фильтрация");
+            List<AgentType> agentTypes = DBagent.db.AgentType.ToList();
+            for ( int i=0; i< agentTypes.Count(); i++)
+            {
+                fil.Items.Add(agentTypes[i].Title);
+            }
+
+        }
         private void dgAgents_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -33,24 +96,22 @@ namespace demoex_disign
 
         private void allagent_load(object sender, RoutedEventArgs e)
         {
-            DBagent.db.AgentType.Load();
-            DBagent.db.Agent.Load();
-            dgAgents.ItemsSource = DBagent.db.Agent.ToList();      
+             
         }
 
         private void sort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            searchу();
         }
 
         private void buttonexit_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+           
         }
 
         private void buttonEdit_Click(object sender, RoutedEventArgs e)
@@ -60,7 +121,19 @@ namespace demoex_disign
 
         private void buttonadd_Click(object sender, RoutedEventArgs e)
         {
+            addpage add = new addpage();
+            add.Show();
+            Close();
+        }
 
+        private void search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            searchу();
+        }
+
+        private void filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            searchу();
         }
     }
 }

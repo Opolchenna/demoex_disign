@@ -8,6 +8,6 @@ namespace demoex_disign.model
 {
     public class DBagent
     {
-        public static Entities db = new Entities();
+        public static Entities1 db = new Entities1();
     }
 }
