@@ -1,4 +1,4 @@
-﻿using demoex_disign.model;
+﻿using demoex_disign;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -65,7 +65,7 @@ namespace demoex_disign
 
             if (fil.SelectedIndex > 0)
             {
-                agent = agent.Where(stroka => stroka.AgentTyp.Title == fil.SelectedItem.ToString()).ToList();
+                agent = agent.Where(stroka => stroka.AgentType.Title == fil.SelectedItem.ToString()).ToList();
             }
 
             switch (sort.SelectedIndex)
@@ -89,16 +89,7 @@ namespace demoex_disign
             }
 
         }
-        private void dgAgents_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void allagent_load(object sender, RoutedEventArgs e)
-        {
-             
-        }
-
+       
         private void sort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             searchу();
@@ -111,17 +102,24 @@ namespace demoex_disign
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-           
+            // List<Agent> agent = DBagent.db.Agent.Where(stroka => stroka.Title.StartsWith(search.Text)).ToList();
+            Agent agent = gridAgent.SelectedItem as Agent;
+            demoex_disign.DBagent.db.Agent.Remove(agent);
+            demoex_disign.DBagent.db.SaveChanges();
+            allagent_load(sender, e);
         }
 
         private void buttonEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            Agent agent = gridAgent.SelectedItem as Agent;
+            addpage add = new addpage(agent);
+            add.Show();
+            Close();
         }
 
         private void buttonadd_Click(object sender, RoutedEventArgs e)
         {
-            addpage add = new addpage();
+            addpage add = new addpage( new Agent());
             add.Show();
             Close();
         }
@@ -134,6 +132,14 @@ namespace demoex_disign
         private void filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             searchу();
+        }
+
+        private void allagent_load(object sender, RoutedEventArgs e)
+        {
+            demoex_disign.DBagent.db.Agent.Load();
+            demoex_disign.DBagent.db.Agent.Load();
+            //griduser.ItemsSource = library_kino.db_kino.db.film.ToList();
+            gridAgent.ItemsSource = demoex_disign.DBagent.db.Agent.ToList();
         }
     }
 }

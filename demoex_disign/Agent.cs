@@ -20,7 +20,6 @@ namespace demoex_disign
             this.AgentPriorityHistory = new HashSet<AgentPriorityHistory>();
             this.ProductSale = new HashSet<ProductSale>();
             this.Shop = new HashSet<Shop>();
-            this.Agents = new HashSet<Agent>();
         }
     
         public int ID { get; set; }
@@ -35,9 +34,8 @@ namespace demoex_disign
         public string Logo { get; set; }
         public int Priority { get; set; }
         public Nullable<int> sale { get; set; }
-
-        public virtual ICollection<Agent> Agents { get; set; }
-        public virtual AgentType AgentTyp { get; set; }
+    
+        public virtual AgentType AgentType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AgentPriorityHistory> AgentPriorityHistory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

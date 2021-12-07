@@ -5,17 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:demoex_disign"
         mc:Ignorable="d"
-        Title="добавление/изменение агента" Height="450" Width="800" Icon="Попрыженок.png">
+        Title="добавление/изменение агента" Height="450" Width="800" Icon="Попрыженок.png" Loaded="add_load">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        
+
         <StackPanel Grid.Row="0" Background="#FF43DCFD" Grid.ColumnSpan="2">
             <Label HorizontalAlignment="Center" Content="Попрыженок" FontSize="26"  FontFamily="Comic Sans MS"/>
         </StackPanel>
@@ -26,26 +27,39 @@
         <Image Source="./image/Попрыженок.ico" HorizontalAlignment="Left" Height="48" />
 
         <Label  Grid.Row="1" Grid.ColumnSpan="2" FontFamily="Comic Sans MS" HorizontalAlignment="Center" VerticalAlignment="Top">Пожалуйста, внесите данные об агенте</Label>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.Column="0">
+
             <StackPanel Orientation="Vertical" Width="107" >
-                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="0,29,10,0">Наименование</Label>
-                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left">Адрес</Label>
-                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left">ИНН</Label>
-                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left">КПП</Label>
-                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left">Имя директора</Label>
-                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left">Телефон</Label>
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="0,40,10,0">Наименование</Label>
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="0,13,0,0">Адрес</Label>
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="0,13,0,0">ИНН</Label>
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="0,13,0,0">КПП</Label>
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="0,13,0,0">Имя директора</Label>
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="0,13,0,0">Телефон</Label>
             </StackPanel>
-            
             <StackPanel>
-                <TextBox x:Name="title" Width="285" Margin="0,29,0,0"></TextBox>
+                <TextBox FontFamily="Comic Sans MS" x:Name="Title" Width="285" Margin="0,40,0,0"  Height="23"></TextBox>
+                <TextBox FontFamily="Comic Sans MS" x:Name="Adress" Width="285" Margin="0,16,0,0"  Height="23"></TextBox>
+                <TextBox FontFamily="Comic Sans MS" x:Name="INN" Width="285" Margin="0,16,0,0"  Height="23" PreviewTextInput="inn_input"/>
+                <TextBox FontFamily="Comic Sans MS" x:Name="KPP" Width="285" Margin="0,16,0,0"  Height="23" PreviewTextInput="kpp_input"></TextBox>
+                <TextBox FontFamily="Comic Sans MS" x:Name="DirectorName" Width="285" Margin="0,16,0,0"  Height="23"></TextBox>
+                <TextBox FontFamily="Comic Sans MS" x:Name="Phone" Width="285" Margin="0,16,0,0"  Height="23"></TextBox>
             </StackPanel>
-            
         </StackPanel>
-        <StackPanel>
-            <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left">Почта</Label>
-            <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left">Приоритет</Label>
-            <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left">Скидка</Label>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.Column="1">
+            <StackPanel Orientation="Vertical" Width="107">
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="0,40,10,0">Почта</Label>
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="0,13,0,0">Приоритет</Label>
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="0,13,0,0">Скидка</Label>
+                <Label FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="0,13,0,0">Тип агента</Label>
+            </StackPanel>
+            <StackPanel>
+                <TextBox FontFamily="Comic Sans MS" x:Name="Email" Width="285" Margin="0,40,0,0" Height="23"></TextBox>
+                <TextBox FontFamily="Comic Sans MS" x:Name="Priority" Width="285" Margin="0,16,0,0" Height="23" PreviewTextInput="priority_input"></TextBox>
+                <TextBox FontFamily="Comic Sans MS" x:Name="sale" Width="285" Margin="0,16,0,0" Height="23" PreviewTextInput="sale_input"></TextBox>
+                <ComboBox FontFamily="Comic Sans MS" x:Name="AgentTypeID" Width="285" Margin="0,16,0,0" Height="23"></ComboBox>
+            </StackPanel>
         </StackPanel>
+        <Button Grid.Row="2" Width="76" Height="24" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="save_click">Сохранить</Button>
     </Grid>
 </Window>

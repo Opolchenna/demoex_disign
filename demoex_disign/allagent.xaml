@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:demoex_disign"
         mc:Ignorable="d"
-        Title="информация об агентах" Height="550" Width="851" Loaded="allagent_load" Icon="Попрыженок.png">
+        Title="информация об агентах" Height="550" Width="851" Icon="Попрыженок.png" Loaded="allagent_load">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -26,7 +26,7 @@
             <ComboBox x:Name="fil" Width="219" SelectionChanged="filter_SelectionChanged" Height="25" FontFamily="Comic Sans MS" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <ComboBox x:Name="sort" Margin="15, 0" Height="25" Width="219" SelectionChanged="sort_SelectionChanged" FontFamily="Comic Sans MS"/>
         </StackPanel>
-        <DataGrid Name="gridAgent" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Top" SelectionChanged="dgAgents_SelectionChanged" Grid.Row="2"
+        <DataGrid Name="gridAgent" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2"
                   CanUserAddRows="False" FontFamily="Comic Sans MS">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="1*">

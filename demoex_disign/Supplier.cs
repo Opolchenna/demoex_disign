@@ -25,7 +25,7 @@ namespace demoex_disign
         public string INN { get; set; }
         public System.DateTime StartDate { get; set; }
         public Nullable<int> QualityRating { get; set; }
-        public string SupplierType { get; set; }
+        public string SupplierTypeID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Material> Material { get; set; }

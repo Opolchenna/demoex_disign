@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace demoex_disign.model
+namespace demoex_disign
 {
     public class DBagent
-    {
-        public static Entities1 db = new Entities1();
+    { 
+        public static Entities2 db = new Entities2();
     }
 }
